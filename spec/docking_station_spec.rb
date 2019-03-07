@@ -24,6 +24,14 @@ describe DockingStation do
       expect(subject.dock(bike)).to eq bike
     end
 
+    it 'raise an exception if there is already a bike in the docking station' do
+      my_bike = Bike.new
+     subject.dock(my_bike)
+     other_bike = Bike.new
+      expect{ subject.dock(other_bike) }.to raise_error("Cannot dock bike - there is already a bike")
+    end
+
+
     it 'show a bike has been docked' do
       my_bike = Bike.new
       subject.dock(my_bike)
